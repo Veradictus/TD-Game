@@ -9,11 +9,16 @@ using UnityEngine;
 
 public class Network : MonoBehaviour {
 
+    public string sceneId;
+
     private string host = "127.0.0.1";
     private int port = 9800;
 
     private TcpClient connection;
     private Thread receivedThread;
+
+    private bool threadRunning = true;
+    private bool sentScene = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,8 +27,36 @@ public class Network : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Send("This is a test");
+        if (!sentScene)
+            SendScene();
+    }
+
+    void OnDestroy() {
+        threadRunning = false;
+
+        connection.GetStream().Close();
+        connection.Close();
+    }
+
+    private void SendScene() {
+        if (connection == null)
+            return;
+
+        sentScene = true;
+
+        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
+
+        jObject.AddField("scene", sceneId);
+
+        Send(jObject.ToString());
+    }
+
+    public void HandleClickPlay() {
+        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
+
+        jObject.AddField("message", "I clicked on the play button!");
+
+        Send(jObject.ToString());
     }
 
     private void Connect() {
@@ -57,7 +90,7 @@ public class Network : MonoBehaviour {
     private void Receive() {
         Byte[] bytes = new Byte[4096]; //4096 bytes is more than enough
 
-        while (true) {
+        while (threadRunning) {
             using (NetworkStream stream = connection.GetStream()) {
                 int length;
 
@@ -94,5 +127,9 @@ public class Network : MonoBehaviour {
             Debug.Log("A socket exception has occurred during sending.");
             Debug.Log(socketException);
         }
+    }
+
+    public bool IsConnected() {
+        return connection != null;
     }
 }
