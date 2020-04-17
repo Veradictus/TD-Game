@@ -9,8 +9,6 @@ using UnityEngine;
 
 public class Network : MonoBehaviour {
 
-    public string sceneId;
-
     private string host = "127.0.0.1";
     private int port = 9800;
 
@@ -18,17 +16,10 @@ public class Network : MonoBehaviour {
     private Thread receivedThread;
 
     private bool threadRunning = true;
-    private bool sentScene = false;
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         Connect();
-    }
-
-    // Update is called once per frame
-    void Update() {
-        if (!sentScene)
-            SendScene();
     }
 
     void OnDestroy() {
@@ -38,11 +29,9 @@ public class Network : MonoBehaviour {
         connection.Close();
     }
 
-    private void SendScene() {
+    public void SendScene(string sceneId) {
         if (connection == null)
             return;
-
-        sentScene = true;
 
         JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
 
