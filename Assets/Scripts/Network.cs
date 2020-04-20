@@ -35,6 +35,7 @@ public class Network : MonoBehaviour {
 
         JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
 
+        jObject.AddField("packetId", (int) Packets.Scene);
         jObject.AddField("scene", sceneId);
 
         Send(jObject.ToString());
