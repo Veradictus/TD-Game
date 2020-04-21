@@ -5,5 +5,6 @@ using UnityEngine;
 public enum Packets {
     Handshake = 0,
     Scene = 1,
-    Intro = 2
+    Intro = 2,
+    Button = 3
 }

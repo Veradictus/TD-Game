@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 1128915499}
   - component: {fileID: 1128915498}
   m_Layer: 0
-  m_Name: SceneHandler
+  m_Name: GameHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 114182709008049796, guid: 459b6d093d158a14f98b431a9b49fc98,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114182709008049796, guid: 459b6d093d158a14f98b431a9b49fc98,
         type: 3}
@@ -368,16 +368,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1128915498}
     - target: {fileID: 114182709008049796, guid: 459b6d093d158a14f98b431a9b49fc98,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HandleClickPlay
+      value: ClickPlayButton
       objectReference: {fileID: 0}
     - target: {fileID: 114182709008049796, guid: 459b6d093d158a14f98b431a9b49fc98,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114182709008049796, guid: 459b6d093d158a14f98b431a9b49fc98,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: play
       objectReference: {fileID: 0}
     - target: {fileID: 114407932468418006, guid: 459b6d093d158a14f98b431a9b49fc98,
         type: 3}

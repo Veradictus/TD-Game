@@ -16,6 +16,7 @@ public class Network : MonoBehaviour {
     private Thread receivedThread;
 
     private bool threadRunning = true;
+    private GameHandler gameHandler;
 
     // Start is called before the first frame update
     void Awake() {
@@ -41,13 +42,18 @@ public class Network : MonoBehaviour {
         Send(jObject.ToString());
     }
 
-    public void HandleClickPlay() {
+    public void SendButton(string button) {
         JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
 
-        jObject.AddField("message", "I clicked on the play button!");
+        jObject.AddField("packetId", (int) Packets.Button);
+        jObject.AddField("button", button);
 
         Send(jObject.ToString());
     }
+
+    /**
+     * Starts a thread specifically for listening to incoming connections.
+     */
 
     private void Connect() {
         try {
@@ -74,11 +80,13 @@ public class Network : MonoBehaviour {
     }
 
     /**
-     * Handles the receiving of messages from the server.
+     * Handles the receiving of messages from the server. We then
+     * relay it through the `gameHandler`.
      */
 
     private void Receive() {
         Byte[] bytes = new Byte[4096]; //4096 bytes is more than enough
+
 
         while (threadRunning) {
             using (NetworkStream stream = connection.GetStream()) {
@@ -91,11 +99,17 @@ public class Network : MonoBehaviour {
 
                     string receivedMessage = Encoding.ASCII.GetString(incomingData);
 
-                    Debug.Log("Message Received: " + receivedMessage);
+                    if (gameHandler != null)
+                        gameHandler.ReceiveNetworkData(receivedMessage);
+
                 }
             }
         }
     }
+
+    /**
+     * Takes the `message` string and sends an encoded ASCII to the server.
+     */
 
     private void Send(string message) {
         if (connection == null)
@@ -109,6 +123,7 @@ public class Network : MonoBehaviour {
                 Debug.Log("Cannot write to the current connection stream.");
                 return;
             }
+
             byte[] byteEncoding = Encoding.ASCII.GetBytes(message);
 
             stream.Write(byteEncoding, 0, byteEncoding.Length);
@@ -117,6 +132,17 @@ public class Network : MonoBehaviour {
             Debug.Log("A socket exception has occurred during sending.");
             Debug.Log(socketException);
         }
+    }
+
+    /**
+     * Grabs the GameHandler from the current scene and sets it as a
+     * global variable. This allows us to interface with each scene.
+     */
+
+    public void SyncGameHandler() {
+        GameObject gameHandlerObject = GameObject.Find("GameHandler");
+
+        gameHandler = (GameHandler) gameHandlerObject.GetComponent(typeof(GameHandler));
     }
 
     public bool IsConnected() {
