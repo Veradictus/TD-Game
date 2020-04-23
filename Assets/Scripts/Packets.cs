@@ -8,3 +8,8 @@ public enum Packets {
     Intro = 2,
     Button = 3
 }
+
+public enum IntroOpcode {
+    Login = 0,
+    Register = 1
+}

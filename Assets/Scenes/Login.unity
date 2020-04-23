@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &337327222 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9207902566958654434, guid: d3c262069b0c2944cb0197fe12903f8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1772666880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683010359
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9f0d45dc7661b409cede3e7d5a8f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  errorMessage: {fileID: 337327222}
   sceneId: login
 --- !u!4 &1522715950
 Transform:
@@ -271,6 +284,10 @@ PrefabInstance:
     - target: {fileID: 1016075705219744, guid: d3c262069b0c2944cb0197fe12903f8d, type: 3}
       propertyPath: m_Name
       value: Login
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309500848474598, guid: d3c262069b0c2944cb0197fe12903f8d, type: 3}
+      propertyPath: m_Name
+      value: InputField_Username
       objectReference: {fileID: 0}
     - target: {fileID: 1494656857287270, guid: d3c262069b0c2944cb0197fe12903f8d, type: 3}
       propertyPath: m_Name
@@ -310,6 +327,66 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114424901695169358, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424901695169358, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424901695169358, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424901695169358, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1522715949}
+    - target: {fileID: 114424901695169358, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPasswordLoginText
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424901695169358, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114633447250338568, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114633447250338568, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114633447250338568, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114633447250338568, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1522715949}
+    - target: {fileID: 114633447250338568, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickLoginButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114633447250338568, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 114735195286181160, guid: d3c262069b0c2944cb0197fe12903f8d,
         type: 3}
       propertyPath: m_Text
@@ -319,6 +396,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Password
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1522715949}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetUsernameLoginText
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924882375394490, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_CharacterLimit
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 224271940964139128, guid: d3c262069b0c2944cb0197fe12903f8d,
         type: 3}
@@ -409,6 +521,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639791924150555739, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_Name
+      value: Error Message
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040999835550015477, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040999835550015477, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207902566958654434, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207902566958654434, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207902566958654434, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207902566958654434, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207902566958654434, guid: d3c262069b0c2944cb0197fe12903f8d,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c262069b0c2944cb0197fe12903f8d, type: 3}

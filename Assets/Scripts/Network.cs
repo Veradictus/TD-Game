@@ -111,7 +111,7 @@ public class Network : MonoBehaviour {
      * Takes the `message` string and sends an encoded ASCII to the server.
      */
 
-    private void Send(string message) {
+    public void Send(string message) {
         if (connection == null)
             return;
 
