@@ -205,13 +205,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 42698319}
   m_TextComponent: {fileID: 1507556411}
   m_Placeholder: {fileID: 1617570993}
-  m_ContentType: 7
-  m_InputType: 2
+  m_ContentType: 6
+  m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -220,7 +220,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1710537982}
-        m_MethodName: SetPasswordLoginText
+        m_MethodName: SetEmailText
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1aa11ddb02b19414b88c33c955199c78, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5076a14720fe0a4f8f490658fdb440d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorMessage: {fileID: 3239191202487714722}
-  sceneId: login
+  sceneId: register
 --- !u!4 &1710537983
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1710537982}
-        m_MethodName: SetPasswordLoginText
+        m_MethodName: SetPasswordConfirmText
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1760,7 +1760,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1710537982}
-        m_MethodName: SetUsernameLoginText
+        m_MethodName: SetUsernameText
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1895,7 +1895,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1710537982}
-        m_MethodName: SetPasswordLoginText
+        m_MethodName: SetPasswordText
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2186,7 +2186,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1710537982}
-        m_MethodName: ClickLoginButton
+        m_MethodName: ClickRegisterButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2357,7 +2357,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1710537982}
-        m_MethodName: LoadMainMenu
+        m_MethodName: LoadLoginScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 5777987600212009392}
   - component: {fileID: 5958061964193875640}
   m_Layer: 5
-  m_Name: Login
+  m_Name: Register
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

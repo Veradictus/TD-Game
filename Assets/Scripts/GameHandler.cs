@@ -10,13 +10,18 @@ public class GameHandler : MonoBehaviour {
      */
 
 
-    // Login screen variables
+    // ------------------------------------------
+    // Login/register screen variables
     public Text errorMessage;
 
     private bool rememberMe;
-    private string usernameLoginText = "";
-    private string passwordLoginText = "";
+    private string usernameText = "";
+    private string passwordText = "";
 
+    // Register Variables
+    private string passwordConfirmText = "";
+    private string emailText = "";
+    // ------------------------------------------
 
     private Network network;
 
@@ -39,6 +44,10 @@ public class GameHandler : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    public void LoadRegisterScene() {
+        SceneManager.LoadScene(3);
+    }
+
     private void SetErrorMessage(string message) {
         errorMessage.text = message;
     }
@@ -50,12 +59,12 @@ public class GameHandler : MonoBehaviour {
     public void ClickLoginButton() {
         SetErrorMessage("");
 
-        if (usernameLoginText.Length < 4) {
+        if (usernameText.Length < 3) {
             SetErrorMessage("Your username must be at least 3 character long!");
             return;
         }
 
-        if (passwordLoginText.Length < 5) {
+        if (passwordText.Length < 4) {
             SetErrorMessage("Your password must be at least 4 characters long.");
             return;
         }
@@ -69,8 +78,47 @@ public class GameHandler : MonoBehaviour {
 
         jObject.AddField("packetId", (int) Packets.Intro);
         jObject.AddField("introOpcode", (int) IntroOpcode.Login);
-        jObject.AddField("username", usernameLoginText);
-        jObject.AddField("password", passwordLoginText);
+        jObject.AddField("username", usernameText);
+        jObject.AddField("password", passwordText);
+
+        network.Send(jObject.ToString());
+    }
+
+    public void ClickRegisterButton() {
+        SetErrorMessage("");
+
+        if (usernameText.Length < 3) {
+            SetErrorMessage("Your username must be at least 3 character long!");
+            return;
+        }
+
+        if (passwordText.Length < 4) {
+            SetErrorMessage("Your password must be at least 4 characters long.");
+            return;
+        }
+
+        if (passwordText != passwordConfirmText) {
+            SetErrorMessage("Your passwords do not match.");
+            return;
+        }
+
+        if (!Utils.IsEmailValid(emailText)) {
+            SetErrorMessage("The email address you have entered is invalid.");
+            return;
+        }
+
+        if (network == null) {
+            SetErrorMessage("Could not establish a connection to the server.");
+            return;
+        }
+
+        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
+
+        jObject.AddField("packetId", (int) Packets.Intro);
+        jObject.AddField("introOpcode", (int) IntroOpcode.Register);
+        jObject.AddField("username", usernameText);
+        jObject.AddField("password", passwordText);
+        jObject.AddField("email", emailText);
 
         network.Send(jObject.ToString());
     }
@@ -80,12 +128,20 @@ public class GameHandler : MonoBehaviour {
         Debug.Log(message);
     }
 
-    public void SetUsernameLoginText(string usernameLoginText) {
-        this.usernameLoginText = usernameLoginText;
+    public void SetUsernameText(string usernameText) {
+        this.usernameText = usernameText;
     }
 
-    public void SetPasswordLoginText(string passwordLoginText) {
-        this.passwordLoginText = passwordLoginText;
+    public void SetPasswordText(string passwordText) {
+        this.passwordText = passwordText;
+    }
+
+    public void SetPasswordConfirmText(string passwordConfirmText) {
+        this.passwordConfirmText = passwordConfirmText;
+    }
+
+    public void SetEmailText(string emailText) {
+        this.emailText = emailText;
     }
 
     public void SetRememberMe(bool rememberMe) {
