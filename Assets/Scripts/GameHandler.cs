@@ -53,7 +53,7 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void ClickPlayButton(string button) {
-        network.SendButton(button);
+        //network.SendButton(button);
     }
 
     public void ClickLoginButton() {
@@ -74,14 +74,12 @@ public class GameHandler : MonoBehaviour {
             return;
         }
 
-        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
+        IntroPacket introPacket = new IntroPacket((int) IntroOpcode.Login);
 
-        jObject.AddField("packetId", (int) Packets.Intro);
-        jObject.AddField("introOpcode", (int) IntroOpcode.Login);
-        jObject.AddField("username", usernameText);
-        jObject.AddField("password", passwordText);
+        introPacket.username = usernameText;
+        introPacket.password = passwordText;
 
-        network.Send(jObject.ToString());
+        network.Send(JsonUtility.ToJson(introPacket));
     }
 
     public void ClickRegisterButton() {
@@ -112,15 +110,13 @@ public class GameHandler : MonoBehaviour {
             return;
         }
 
-        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
+        IntroPacket introPacket = new IntroPacket((int) IntroOpcode.Register);
 
-        jObject.AddField("packetId", (int) Packets.Intro);
-        jObject.AddField("introOpcode", (int) IntroOpcode.Register);
-        jObject.AddField("username", usernameText);
-        jObject.AddField("password", passwordText);
-        jObject.AddField("email", emailText);
+        introPacket.username = usernameText;
+        introPacket.password = passwordText;
+        introPacket.email = emailText;
 
-        network.Send(jObject.ToString());
+        network.Send(JsonUtility.ToJson(introPacket));
     }
 
     public void ReceiveNetworkData(string message) {

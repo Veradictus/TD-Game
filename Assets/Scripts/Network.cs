@@ -34,21 +34,11 @@ public class Network : MonoBehaviour {
         if (connection == null)
             return;
 
-        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
+        ScenePacket scenePacket = new ScenePacket();
 
-        jObject.AddField("packetId", (int) Packets.Scene);
-        jObject.AddField("scene", sceneId);
+        scenePacket.scene = sceneId;
 
-        Send(jObject.ToString());
-    }
-
-    public void SendButton(string button) {
-        JSONObject jObject = new JSONObject(JSONObject.Type.OBJECT);
-
-        jObject.AddField("packetId", (int) Packets.Button);
-        jObject.AddField("button", button);
-
-        Send(jObject.ToString());
+        Send(JsonUtility.ToJson(scenePacket));
     }
 
     /**
