@@ -124,8 +124,28 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void ReceiveNetworkData(string message) {
-        Debug.Log("Received network data!!!");
-        Debug.Log(message);
+        Packet packet = JsonUtility.FromJson<Packet>(message);
+
+        SyncContext.RunOnUnityThread(() => {
+            switch (packet.packetId) {
+
+                case (int) Packets.Error:
+                    HandleError(message);
+                    break;
+            }
+        });
+
+    }
+
+    private void HandleError(string message) {
+        ErrorPacket errorPacket = JsonUtility.FromJson<ErrorPacket>(message);
+
+        switch(this.sceneId) {
+            case "register":
+            case "login":
+                SetErrorMessage(errorPacket.message);
+                break;
+        }
     }
 
     public void SetUsernameText(string usernameText) {
