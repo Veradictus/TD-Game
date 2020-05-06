@@ -9,6 +9,10 @@ public class ScenePacket : Packet {
         this.opcode = -1;
     }
 
-    public string scene;
+    public ScenePacket(int sceneId) {
+        this.packetId = (int) Packets.Scene;
+        this.opcode = sceneId;
+    }
 
+    public string scene;
 }

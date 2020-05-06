@@ -125,20 +125,35 @@ public class GameHandler : MonoBehaviour {
         SyncContext.RunOnUnityThread(() => {
             switch (packet.packetId) {
 
+                case (int) Packets.Scene:
+                    HandleScene(message);
+                    break;
+
                 case (int) Packets.Error:
                     HandleError(message);
                     break;
+
             }
         });
 
     }
 
+    private void HandleScene(string message) {
+        ScenePacket scenePacket = JsonUtility.FromJson<ScenePacket>(message);
+
+        Debug.Log("Received scene w/ opcode: " + scenePacket.opcode);
+
+        SceneManager.LoadScene(scenePacket.opcode);
+    }
+
     private void HandleError(string message) {
         ErrorPacket errorPacket = JsonUtility.FromJson<ErrorPacket>(message);
 
+        Debug.Log(this.sceneId);
+
         switch(this.sceneId) {
-            case "register":
-            case "login":
+            case "Register":
+            case "Login":
                 SetErrorMessage(errorPacket.message);
                 break;
         }

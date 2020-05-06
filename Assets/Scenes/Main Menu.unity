@@ -299,7 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9f0d45dc7661b409cede3e7d5a8f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: mainmenu
+  errorMessage: {fileID: 0}
+  sceneId: MainMenu
 --- !u!4 &1128915499
 Transform:
   m_ObjectHideFlags: 0

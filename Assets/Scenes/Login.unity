@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorMessage: {fileID: 9207902566259794914}
-  sceneId: login
+  sceneId: Login
 --- !u!4 &1522715950
 Transform:
   m_ObjectHideFlags: 0
